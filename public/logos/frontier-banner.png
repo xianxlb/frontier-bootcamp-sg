@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    
+		<link href="../../../_app/immutable/assets/0.8a0fe8f0.css" rel="stylesheet">
+		<link href="../../../_app/immutable/assets/Link.d4803fed.css" rel="stylesheet">
+		<link href="../../../_app/immutable/assets/Modal.b83201c6.css" rel="stylesheet"><title>Solana Frontier Hackathon</title><!-- HEAD_svelte-102htjw_START --> <meta name="description" content="Solana Frontier Online Hackathon"> <meta property="og:title" content="Solana Frontier Online Hackathon"> <meta property="og:description" content="Powered by Colosseum, registration open now."> <meta property="og:image" content="https://static.narrative-violation.com/frontier-social.png"> <meta property="og:image:width" content="1200"> <meta property="og:image:height" content="630"> <meta property="og:type" content="website"> <meta name="twitter:card" content="summary_large_image"> <meta name="twitter:creator" content="@colosseum"><!-- HEAD_svelte-102htjw_END -->
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N998VT5NWQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-N998VT5NWQ');
+  </script>
+  <body data-sveltekit-preload-data="hover">
+    <!-- FOUC hack for Firefox -->
+    <script>
+      0;
+    </script>
+    <div style="display: contents">   <h1>404</h1> <p>Not Found</p> 
+			
+			<script>
+				{
+					__sveltekit_1yhzhlk = {
+						base: new URL("../../..", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [{"type":"data","data":{currentEvent:{eventType:"hackathon",name:"Frontier",phase:"active",emoji:"🏔️",participantCount:10557,countdownTarget:"2026-05-11T06:59:00.000Z",countdownLabel:"Submissions due",bannerImageUrl:"https://static.narrative-violation.com/frontier-banner-static-large.png",smallBannerImageUrl:"https://static.narrative-violation.com/frontier-banner-static-small.png",landingPageUrl:"https://colosseum.com/frontier",headline:"The Frontier Hackathon",description:"The hackathon is live. Build your project and submit before the deadline.",ctaText:"Register Now",ctaUrl:"https://arena.colosseum.org/hackathon",programs:{hackathon:{name:"Frontier",active:true,phase:"active",label:"Live",landingPageUrl:"https://colosseum.com/frontier"},eternal:{active:false,label:"Paused",landingPageUrl:"https://colosseum.org/eternal"}},totalBuilders:94012}},"uses":{}},null];
+
+					Promise.all([
+						import("../../../_app/immutable/entry/start.b1d9667c.js"),
+						import("../../../_app/immutable/entry/app.be4c0afd.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 1],
+							data,
+							form: null,
+							error: {message:"Not Found"},
+							status: 404
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>

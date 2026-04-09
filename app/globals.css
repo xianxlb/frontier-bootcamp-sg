@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-instrument-serif);
+
+  --color-white: #ffffff;
+  --color-cream: #fdfcfa;
+  --color-near-white: rgb(253, 254, 253);
+  --color-dark1: #171615;
+  --color-dark2: rgba(23, 22, 21, 0.6);
+  --color-teal-accent: #084a5e;
+
+  --color-hero-deep: #002544;
+  --color-hero-mid: #1b4c7f;
+
+  --color-btn-top: #404040;
+  --color-btn-bottom: #1a1a1a;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: #171615;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Register pill button ── */
+.register-btn {
+  border-radius: 9999px;
+  padding: 4px;
+  overflow: hidden;
+  box-shadow:
+    0px 2px 5px rgba(0, 0, 0, 0.1),
+    0px 9px 9px rgba(0, 0, 0, 0.09),
+    0px 20px 12px rgba(0, 0, 0, 0.05),
+    0px 35px 14px rgba(0, 0, 0, 0.01),
+    0px 55px 15px rgba(0, 0, 0, 0);
+  transition: transform 200ms ease-out;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.register-btn:hover {
+  transform: scale(1.05);
+}
+
+.register-btn-inner {
+  background: linear-gradient(to bottom, #404040, #1a1a1a);
+  border-radius: 9999px;
+  padding: 10px 24px;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.26px;
+  white-space: nowrap;
+  display: block;
+}
+
+/* ── Section heading (editorial display style) ── */
+.section-heading {
+  color: #171615;
+  font-family: var(--font-instrument-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* ── Display number (pp-watch substitute) ── */
+.display-number {
+  font-size: 34.56px;
+  font-weight: 700;
+  letter-spacing: -1.04px;
+  line-height: 42.24px;
+  color: #171615;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.display-large {
+  font-size: 35.78px;
+  font-weight: 700;
+  letter-spacing: -1.43px;
+  line-height: 35.78px;
+  color: #171615;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ── Sponsor card ── */
+.sponsor-card {
+  height: 160px;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 4px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform 300ms;
+  background: white;
+  flex-shrink: 0;
+}
+
+.sponsor-card:hover {
+  transform: scale(1.05);
+}
+
+/* ── Infinite marquee ── */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.3334%); }
+}
+
+.marquee-wrap {
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 36s linear infinite;
+  will-change: transform;
+}
+
+.marquee-wrap:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ── Workshop row divider ── */
+.workshop-row {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background-color 150ms;
+  cursor: pointer;
+}
+
+.workshop-row:last-child {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.workshop-row:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* ── Workshop sponsor thumbnail ── */
+.workshop-thumb {
+  width: 80px;
+  height: 80px;
+  aspect-ratio: 1;
+  border-radius: 20px;
+  background: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.75), 0 2px 8px rgba(0,0,0,0.08);
+  object-fit: cover;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  mix-blend-mode: multiply;
+}
+
+/* ── Mentor/Judge card ── */
+.mentor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: default;
+}
+
+.mentor-photo {
+  transition: filter 200ms, opacity 200ms;
+  filter: grayscale(100%) opacity(0.5);
+}
+
+@media (pointer: fine) {
+  .mentor-card:hover .mentor-photo {
+    filter: grayscale(0%) opacity(1);
+  }
+}
+
+/* ── Award marquee divider ── */
+.award-divider {
+  width: 1px;
+  background: rgba(0, 0, 0, 0.1);
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
+/* ── Max width container ── */
+.container-wide {
+  max-width: 1360px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
