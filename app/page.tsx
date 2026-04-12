@@ -499,31 +499,6 @@ function Mentors() {
               )}
             </div>
           ))}
-
-          {/* Coming soon slots */}
-          {[1, 2, 3, 4].map((n) => (
-            <div key={`soon-${n}`} className="mentor-card" style={{ opacity: 0.35 }}>
-              <div
-                style={{
-                  width: "96px",
-                  height: "96px",
-                  borderRadius: "8px",
-                  background: "#f0ece4",
-                  border: "1px dashed rgba(23,22,21,0.15)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "24px",
-                  color: "rgba(23,22,21,0.2)",
-                }}
-              >
-                ?
-              </div>
-              <p style={{ fontSize: "13px", color: "rgba(23,22,21,0.4)", margin: "4px 0 0", textAlign: "center" }}>
-                Coming soon
-              </p>
-            </div>
-          ))}
         </div>
       </div>
     </section>
