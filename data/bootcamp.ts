@@ -31,6 +31,7 @@ export const LOGOS = {
   phantom: "/logos/Phantom-Icon_App.200407a8.svg",
   metaplex: "/logos/metaplexIcon.255a6dc1.jpeg",
   world: "/logos/WorldLogoBlack.ee1d2f70.svg",
+  bedrock: "/logos/BedrockFndn.jpg",
 };
 
 export type Session = {
@@ -82,7 +83,7 @@ export const SESSIONS: Session[] = [
         time: "1:30 PM",
         item: "ICM & Bedrock Foundation",
         speaker: "@0xSoju, @BedrockFndn",
-        logo: LOGOS.superteam,
+        logo: LOGOS.bedrock,
       },
       {
         time: "2:00 PM",
@@ -210,7 +211,7 @@ export const WORKSHOPS: Workshop[] = [
   {
     topic: "ICM & Bedrock Foundation",
     speaker: "@0xSoju, @BedrockFndn",
-    logo: LOGOS.superteam,
+    logo: LOGOS.bedrock,
     sessionId: "session-2",
   },
   {
