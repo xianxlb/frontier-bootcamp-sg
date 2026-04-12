@@ -177,6 +177,17 @@ export const MENTORS: Mentor[] = [
     twitter: "imhihi23",
     avatar: "/mentors/imhihi23.jpg",
   },
+  { name: "Eugene", title: "Mentor", org: "Chainstack", twitter: "toxzique", avatar: "/mentors/toxzique.jpg" },
+  { name: "Ake", title: "Mentor", org: "Chainstack", twitter: "AkeGaviar", avatar: "/mentors/AkeGaviar.jpg" },
+  { name: "Soju", title: "Mentor", org: "Meteora", twitter: "0xSoju", avatar: "/mentors/0xSoju.jpg" },
+  { name: "Anmol", title: "Mentor", org: "Jupiter", twitter: "0xanmol", avatar: "/mentors/0xanmol.jpg" },
+  { name: "Melvin", title: "Mentor", org: "Jupiter", twitter: "melvinzzy", avatar: "/mentors/melvinzzy.jpg" },
+  { name: "FP", title: "Mentor", org: "Sanctum", twitter: "soleconomist", avatar: "/mentors/soleconomist.jpg" },
+  { name: "Cleon", title: "Mentor", org: "Sanctum", twitter: "cwchanchan", avatar: "/mentors/cwchanchan.jpg" },
+  { name: "Seb", title: "Mentor", org: "Mesa", twitter: "Sirolaso", avatar: "/mentors/Sirolaso.jpg" },
+  { name: "Devan", title: "Mentor", org: "Google Web3", twitter: "mitchem", avatar: "/mentors/mitchem.jpg" },
+  { name: "Keith", title: "Mentor", org: "Allium" },
+  { name: "Mustafa", title: "Mentor", org: "Pivot Global", twitter: "MustafaYilham", avatar: "/mentors/MustafaYilham.jpg" },
   // ── Add more mentors here ──
   // {
   //   name: "Jane Doe",
