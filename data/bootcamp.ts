@@ -188,8 +188,9 @@ export const MENTORS: Mentor[] = [
   { name: "Cleon", title: "Mentor", org: "Sanctum", twitter: "cwchanchan", avatar: "/mentors/cwchanchan.jpg" },
   { name: "Seb", title: "Mentor", org: "Mesa", twitter: "Sirolaso", avatar: "/mentors/Sirolaso.jpg" },
   { name: "Devan", title: "Mentor", org: "Google Web3", twitter: "mitchem", avatar: "/mentors/mitchem.jpg" },
-  { name: "Keith", title: "Mentor", org: "Allium" },
   { name: "Mustafa", title: "Mentor", org: "Pivot Global", twitter: "MustafaYilham", avatar: "/mentors/MustafaYilham.jpg" },
+  { name: "Lanna", title: "EIR", org: "Antler", avatar: "/mentors/lannaroche.jpg" },
+  { name: "Chaerin", title: "APAC Growth", org: "Solana Foundation", twitter: "decentra1ized_", avatar: "/mentors/decentra1ized_.jpg" },
   // ── Add more mentors here ──
   // {
   //   name: "Jane Doe",
