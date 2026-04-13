@@ -1,5 +1,6 @@
 import Nav from "./components/Nav";
-import { EVENT, HACKATHON_PRIZES, SESSIONS, MENTORS } from "@/data/bootcamp";
+import SessionsSection from "./components/SessionsSection";
+import { EVENT, HACKATHON_PRIZES, MENTORS } from "@/data/bootcamp";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // HERO
@@ -111,35 +112,27 @@ function Hero() {
           Presented by
         </p>
 
-        {/* Org names */}
+        {/* Org logos */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "12px",
+            gap: "16px",
           }}
         >
-          <span
-            style={{
-              fontSize: "16px",
-              fontWeight: 600,
-              color: "white",
-              letterSpacing: "-0.16px",
-            }}
-          >
-            Superteam SG
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logos/superteam.d554d881.svg"
+            alt="Superteam SG"
+            style={{ height: "22px", width: "auto", filter: "brightness(0) invert(1)" }}
+          />
           <span style={{ color: "rgba(255,255,255,0.3)", fontSize: "18px" }}>×</span>
-          <span
-            style={{
-              fontSize: "16px",
-              fontWeight: 600,
-              color: "white",
-              letterSpacing: "-0.16px",
-            }}
-          >
-            Colosseum Frontier
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logos/colosseum-white.svg"
+            alt="Colosseum Frontier"
+            style={{ height: "22px", width: "auto" }}
+          />
         </div>
 
         {/* Date */}
@@ -153,7 +146,7 @@ function Hero() {
             margin: 0,
           }}
         >
-          April 11th – May 11th 2026 · Singapore
+          April 6th – May 11th 2026 · Singapore
         </p>
 
         {/* Main wordmark */}
@@ -509,214 +502,6 @@ function Mentors() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// WORKSHOPS / SESSIONS (adapts Workshop section)
-// ─────────────────────────────────────────────────────────────────────────────
-
-function WorkshopLogo({ src, alt }: { src: string; alt: string }) {
-  return (
-    <div
-      className="workshop-thumb"
-      style={{ background: "#fff", borderRadius: "20px", padding: "10px" }}
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src}
-        alt={alt}
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "contain",
-          mixBlendMode: "multiply",
-        }}
-      />
-    </div>
-  );
-}
-
-function WorkshopsSection() {
-  return (
-    <section
-      id="workshops"
-      style={{
-        background: "linear-gradient(180deg, #ffffff 0%, #fdfcfa 15%, #fdfcfa 100%)",
-        paddingTop: "96px",
-        paddingBottom: "96px",
-      }}
-    >
-      <div className="container-wide" id="schedule">
-        {/* Heading */}
-        <div style={{ marginBottom: "48px" }}>
-          <h2
-            className="section-heading"
-            style={{ fontSize: "clamp(2.5rem, 4vw, 4rem)", margin: "0 0 12px" }}
-          >
-            Sessions &amp; Workshops
-          </h2>
-          <p
-            style={{
-              fontSize: "16px",
-              color: "rgba(23,22,21,0.6)",
-              letterSpacing: "-0.16px",
-              maxWidth: "560px",
-            }}
-          >
-            Five weeks of programming for Singapore builders. More sessions will be announced as partners confirm.
-          </p>
-        </div>
-
-        {/* Session blocks */}
-        {SESSIONS.map((session) => (
-          <div key={session.id} style={{ marginBottom: "48px" }}>
-            {/* Session header */}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: "16px",
-                padding: "16px 0",
-                borderBottom: "2px solid #171615",
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "baseline", gap: "16px", flexWrap: "wrap" }}>
-                <span
-                  style={{
-                    fontSize: "13px",
-                    fontWeight: 600,
-                    letterSpacing: "0.32px",
-                    textTransform: "uppercase",
-                    color: "rgba(23,22,21,0.5)",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {session.date} · {session.time}
-                </span>
-                <span
-                  style={{
-                    fontSize: "17.92px",
-                    fontWeight: 500,
-                    letterSpacing: "-0.188px",
-                    color: "#171615",
-                  }}
-                >
-                  {session.title}
-                </span>
-              </div>
-              {session.tag && (
-                <span
-                  style={{
-                    fontSize: "11px",
-                    fontWeight: 700,
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    padding: "4px 10px",
-                    borderRadius: "4px",
-                    background: session.inviteOnly ? "rgba(8,74,94,0.08)" : "rgba(23,22,21,0.06)",
-                    color: session.inviteOnly ? "#084a5e" : "rgba(23,22,21,0.5)",
-                    whiteSpace: "nowrap",
-                    flexShrink: 0,
-                  }}
-                >
-                  {session.tag}
-                </span>
-              )}
-            </div>
-
-            {/* Agenda rows (sessions without agenda show description row) */}
-            {session.agenda.length === 0 ? (
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "20px",
-                  padding: "16px 40px 16px 0",
-                  height: "80px",
-                  borderTop: "1px solid rgba(0,0,0,0.06)",
-                }}
-              >
-                <WorkshopLogo src={session.logo} alt={session.title} />
-                <p style={{ fontSize: "15px", color: "rgba(23,22,21,0.6)", margin: 0, letterSpacing: "-0.15px" }}>
-                  {session.description}
-                </p>
-              </div>
-            ) : null}
-
-            {session.agenda.map((item, i) => (
-              <a
-                key={i}
-                href={EVENT.lumaUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="workshop-row"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "20px",
-                  padding: "16px 40px 16px 0",
-                  height: "112px",
-                  textDecoration: "none",
-                }}
-              >
-                <WorkshopLogo
-                  src={item.logo ?? session.logo}
-                  alt={item.item}
-                />
-
-                {/* Title + presenter */}
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <p
-                    style={{
-                      fontSize: "17.92px",
-                      fontWeight: 500,
-                      letterSpacing: "-0.188px",
-                      lineHeight: "22.8px",
-                      color: "#171615",
-                      margin: "0 0 4px",
-                      whiteSpace: "nowrap",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                    }}
-                  >
-                    {item.item}
-                  </p>
-                  <p
-                    style={{
-                      fontSize: "15px",
-                      color: "rgba(23,22,21,0.6)",
-                      letterSpacing: "-0.15px",
-                      margin: 0,
-                    }}
-                  >
-                    {item.speaker || "Superteam SG"}
-                  </p>
-                </div>
-
-                {/* Time */}
-                <p
-                  style={{
-                    fontSize: "14px",
-                    color: "rgba(23,22,21,0.6)",
-                    letterSpacing: "0.26px",
-                    textAlign: "right",
-                    flexShrink: 0,
-                    margin: 0,
-                  }}
-                >
-                  {item.time}
-                  <br />
-                  <span style={{ fontSize: "13px", opacity: 0.7 }}>SGT</span>
-                </p>
-              </a>
-            ))}
-          </div>
-        ))}
-
-      </div>
-    </section>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
 // CTA STRIP
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -838,7 +623,7 @@ export default function Home() {
         <Benefits />
         <Prizes />
         <Mentors />
-        <WorkshopsSection />
+        <SessionsSection />
         <CTAStrip />
       </main>
       <Footer />

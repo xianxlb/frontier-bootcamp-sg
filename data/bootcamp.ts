@@ -23,7 +23,7 @@ export const HACKATHON_PRIZES = [
 
 // Logo paths — files are in /public/logos/
 export const LOGOS = {
-  superteam: "/logos/superteam.d554d881.svg",
+  superteam: "/logos/superteam-sg.jpg",
   colosseum: "/logos/Colosseum_Logo.4b0268dc.svg",
   solanaFoundation: "/logos/solana_foundation_logo.c699502f.svg",
   solana: "/logos/solanaLogoMark.113cb367.svg",
@@ -32,6 +32,9 @@ export const LOGOS = {
   metaplex: "/logos/metaplexIcon.255a6dc1.jpeg",
   world: "/logos/WorldLogoBlack.ee1d2f70.svg",
   bedrock: "/logos/BedrockFndn.jpg",
+  allium: "/logos/allium.jpg",
+  chainstack: "/logos/chainstack.png",
+  mesa: "/logos/mesa.jpg",
 };
 
 export type Session = {
@@ -43,7 +46,7 @@ export type Session = {
   tag?: string;         // e.g. "INTRODUCTION", "INVITE-ONLY", "DEMODAY"
   inviteOnly?: boolean;
   logo: string;
-  agenda: { time: string; item: string; speaker?: string; logo?: string }[];
+  agenda: { time: string; item: string; speaker?: string; description?: string; logo?: string }[];
   status: "upcoming" | "live" | "past";
 };
 
@@ -68,12 +71,12 @@ export const SESSIONS: Session[] = [
       { time: "3:00 PM", item: "Form your Team", speaker: "Each participant will introduce themselves and their working ideas to find team members who are aligned", logo: LOGOS.superteam },
       { time: "5:00 PM", item: "End of Mixer", speaker: "The frontier building begins!", logo: LOGOS.superteam },
     ],
-    status: "upcoming",
+    status: "past",
   },
   {
     id: "session-2",
     date: "Saturday, 18 Apr 2026",
-    time: "1:30 PM – 3:30 PM SGT",
+    time: "1:30 PM – 6:00 PM SGT",
     title: "Workshops & Build Day",
     description:
       "Hands-on technical workshops, then stay to start building with your team.",
@@ -82,24 +85,46 @@ export const SESSIONS: Session[] = [
     agenda: [
       {
         time: "1:30 PM",
-        item: "ICM & Bedrock Foundation",
-        speaker: "@0xSoju, @BedrockFndn",
-        logo: LOGOS.bedrock,
+        item: "Opening",
+        logo: LOGOS.superteam,
       },
       {
         time: "2:00 PM",
-        item: "AI-powered marketing automation for Web3 projects",
-        logo: LOGOS.superteam,
+        item: "What is ICM? What is Bedrock?",
+        speaker: "Soju, Co-Lead @ Meteora",
+        description: "Understand the fundamentals of ICM and the Bedrock Foundation. Explore how these technologies are changing the way capital is raised in crypto.",
+        logo: LOGOS.bedrock,
+      },
+      {
+        time: "2:30 PM",
+        item: "Introduction to onchain data analytics",
+        speaker: "Chue Hsien, Engineer @ Allium",
+        description: "Learn how to query and analyze Solana blockchain data. Explore token transfers, DEX trades, wallet activity, and more through Allium's Explorer and APIs.",
+        logo: LOGOS.allium,
       },
       {
         time: "3:00 PM",
-        item: "On-chain data querying via Google BigQuery + x402 payments",
-        logo: LOGOS.superteam,
+        item: "Build your AI Chief of Staff",
+        speaker: "Seb, Founder @ Mesa Studio",
+        description: "A live walkthrough of the SecondBrain system: autonomous agents managing calendar, meeting prep, outreach, and tasks across two companies. Not theory. The actual daily setup of a working CEO.",
+        logo: LOGOS.mesa,
       },
       {
         time: "3:30 PM",
-        item: "Solana RPC best practices & node management",
-        logo: LOGOS.solanaFoundation,
+        item: "Solana RPCs best practices and node management",
+        speaker: "Evgeny, Developer Experience @ Chainstack",
+        description: "Understand how RPCs work and why they matter for building decentralized applications. Learn best practices for reliable blockchain connectivity and node management.",
+        logo: LOGOS.chainstack,
+      },
+      {
+        time: "4:00 PM",
+        item: "Co-work + Networking",
+        logo: LOGOS.superteam,
+      },
+      {
+        time: "6:00 PM",
+        item: "Close",
+        logo: LOGOS.superteam,
       },
     ],
     status: "upcoming",
@@ -180,7 +205,7 @@ export const MENTORS: Mentor[] = [
     avatar: "/mentors/imhihi23.jpg",
   },
   { name: "Eugene", title: "Mentor", org: "Chainstack", twitter: "toxzique", avatar: "/mentors/toxzique.jpg" },
-  { name: "Ake", title: "Mentor", org: "Chainstack", twitter: "AkeGaviar", avatar: "/mentors/AkeGaviar.jpg" },
+  { name: "Evgeny", title: "Mentor", org: "Chainstack", twitter: "AkeGaviar", avatar: "/mentors/AkeGaviar.jpg" },
   { name: "Soju", title: "Mentor", org: "Meteora", twitter: "0xSoju", avatar: "/mentors/0xSoju.jpg" },
   { name: "Anmol", title: "Mentor", org: "Jupiter", twitter: "0xanmol", avatar: "/mentors/0xanmol.jpg" },
   { name: "Melvin", title: "Mentor", org: "Jupiter", twitter: "melvinzzy", avatar: "/mentors/melvinzzy.jpg" },
