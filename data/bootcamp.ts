@@ -216,6 +216,7 @@ export const MENTORS: Mentor[] = [
   { name: "Mustafa", title: "Mentor", org: "Pivot Global", twitter: "MustafaYilham", avatar: "/mentors/MustafaYilham.jpg" },
   { name: "Lanna", title: "EIR", org: "Antler", twitter: "lannaroche", avatar: "/mentors/lannaroche.jpg" },
   { name: "Chaerin", title: "APAC Growth", org: "Solana Foundation", twitter: "decentra1ized_", avatar: "/mentors/decentra1ized_.jpg" },
+  { name: "Chue Hsien", title: "Engineer", org: "Allium", twitter: "gohchaa", avatar: "https://unavatar.io/twitter/gohchaa" },
   // ── Add more mentors here ──
   // {
   //   name: "Jane Doe",
