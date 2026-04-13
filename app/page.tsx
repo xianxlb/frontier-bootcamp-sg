@@ -222,22 +222,25 @@ function Hero() {
 
 const BENEFITS = [
   {
-    img: "/logos/funding.png",
+    img: "/images/250k.jpeg",
     alt: "Funding",
+    objectPosition: "center 40%",
     amount: "$250,000",
     desc: "Pre-seed funding for hackathon winners through Colosseum's accelerator programme",
   },
   {
-    img: "/logos/network.png",
-    alt: "Network",
-    amount: "Elite Network",
-    desc: "Exclusive access to an elite founder network and Solana ecosystem connections",
-  },
-  {
-    img: "/logos/mentorship.png",
+    img: "/images/1-1.jpg",
     alt: "Mentorship",
+    objectPosition: "center center",
     amount: "1:1 Mentorship",
     desc: "Direct ecosystem connections and 1:1 mentorship from leading Solana operators",
+  },
+  {
+    img: "/images/network.jpg",
+    alt: "Network",
+    objectPosition: "center 60%",
+    amount: "Elite Network",
+    desc: "Exclusive access to an elite founder network and Solana ecosystem connections",
   },
 ];
 
@@ -305,16 +308,16 @@ function Benefits() {
                 textAlign: "center",
               }}
             >
-              {/* Colosseum illustration — mix-blend-multiply so white disappears on white bg */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={b.img}
                 alt={b.alt}
                 style={{
                   width: "300px",
-                  height: "300px",
-                  objectFit: "contain",
-                  mixBlendMode: "multiply",
+                  height: "220px",
+                  objectFit: "cover",
+                  objectPosition: b.objectPosition,
+                  borderRadius: "12px",
                 }}
               />
 
