@@ -10,49 +10,41 @@ function WorkshopLogo({ src, alt }: { src: string; alt: string }) {
       <img
         src={src}
         alt={alt}
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-        }}
+        style={{ width: "100%", height: "100%", objectFit: "cover" }}
       />
     </div>
   );
 }
 
-function SessionBlock({ session, isPast }: { session: Session; isPast: boolean }) {
+function SessionBlock({ session }: { session: Session }) {
+  const isPast = session.status === "past";
+
   return (
-    <div
-      key={session.id}
-      style={{
-        marginBottom: "48px",
-        opacity: isPast ? 0.45 : 1,
-        transition: "opacity 0.2s",
-      }}
-    >
-      {/* Session header */}
+    <div style={{ opacity: isPast ? 0.45 : 1, transition: "opacity 0.2s" }}>
+      {/* Session title row */}
       <div
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           gap: "16px",
-          padding: "16px 0",
-          borderBottom: isPast ? "2px solid rgba(23,22,21,0.25)" : "2px solid #171615",
+          padding: "14px 0",
+          borderBottom: "1px solid rgba(23,22,21,0.10)",
+          flexWrap: "wrap",
         }}
       >
-        <div style={{ display: "flex", alignItems: "baseline", gap: "16px", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", alignItems: "baseline", gap: "12px", flexWrap: "wrap" }}>
           <span
             style={{
               fontSize: "13px",
               fontWeight: 600,
               letterSpacing: "0.32px",
               textTransform: "uppercase",
-              color: "rgba(23,22,21,0.5)",
+              color: "rgba(23,22,21,0.45)",
               whiteSpace: "nowrap",
             }}
           >
-            {session.date} · {session.time}
+            {session.time}
           </span>
           <span
             style={{
@@ -73,12 +65,8 @@ function SessionBlock({ session, isPast }: { session: Session; isPast: boolean }
             textTransform: "uppercase",
             padding: "4px 10px",
             borderRadius: "4px",
-            background: isPast
-              ? "rgba(23,22,21,0.06)"
-              : "rgba(16,124,96,0.1)",
-            color: isPast
-              ? "rgba(23,22,21,0.4)"
-              : "#0d7a5f",
+            background: isPast ? "rgba(23,22,21,0.06)" : "rgba(16,124,96,0.1)",
+            color: isPast ? "rgba(23,22,21,0.4)" : "#0d7a5f",
             whiteSpace: "nowrap",
             flexShrink: 0,
           }}
@@ -87,16 +75,15 @@ function SessionBlock({ session, isPast }: { session: Session; isPast: boolean }
         </span>
       </div>
 
-      {/* Agenda rows */}
-      {session.agenda.length === 0 ? (
+      {/* Empty agenda placeholder */}
+      {session.agenda.length === 0 && (
         <div
           style={{
             display: "flex",
             alignItems: "center",
             gap: "20px",
             padding: "16px 40px 16px 0",
-            height: "80px",
-            borderTop: "1px solid rgba(0,0,0,0.06)",
+            minHeight: "72px",
           }}
         >
           <WorkshopLogo src={session.logo} alt={session.title} />
@@ -104,8 +91,9 @@ function SessionBlock({ session, isPast }: { session: Session; isPast: boolean }
             {session.description}
           </p>
         </div>
-      ) : null}
+      )}
 
+      {/* Agenda rows */}
       {session.agenda.map((item, i) => (
         <a
           key={i}
@@ -124,7 +112,6 @@ function SessionBlock({ session, isPast }: { session: Session; isPast: boolean }
           }}
         >
           <WorkshopLogo src={item.logo ?? session.logo} alt={item.item} />
-
           <div style={{ flex: 1, minWidth: 0 }}>
             <p
               style={{
@@ -142,43 +129,17 @@ function SessionBlock({ session, isPast }: { session: Session; isPast: boolean }
               {item.item}
             </p>
             {item.speaker && (
-              <p
-                style={{
-                  fontSize: "15px",
-                  color: "rgba(23,22,21,0.6)",
-                  letterSpacing: "-0.15px",
-                  margin: "0 0 2px",
-                }}
-              >
+              <p style={{ fontSize: "15px", color: "rgba(23,22,21,0.6)", letterSpacing: "-0.15px", margin: "0 0 2px" }}>
                 {item.speaker}
               </p>
             )}
             {item.description && (
-              <p
-                style={{
-                  fontSize: "13px",
-                  color: "rgba(23,22,21,0.45)",
-                  letterSpacing: "-0.13px",
-                  lineHeight: "1.5",
-                  margin: 0,
-                  whiteSpace: "normal",
-                }}
-              >
+              <p style={{ fontSize: "13px", color: "rgba(23,22,21,0.45)", letterSpacing: "-0.13px", lineHeight: "1.5", margin: 0, whiteSpace: "normal" }}>
                 {item.description}
               </p>
             )}
           </div>
-
-          <p
-            style={{
-              fontSize: "14px",
-              color: "rgba(23,22,21,0.6)",
-              letterSpacing: "0.26px",
-              textAlign: "right",
-              flexShrink: 0,
-              margin: 0,
-            }}
-          >
+          <p style={{ fontSize: "14px", color: "rgba(23,22,21,0.6)", letterSpacing: "0.26px", textAlign: "right", flexShrink: 0, margin: 0 }}>
             {item.time}
             <br />
             <span style={{ fontSize: "13px", opacity: 0.7 }}>SGT</span>
@@ -190,9 +151,13 @@ function SessionBlock({ session, isPast }: { session: Session; isPast: boolean }
 }
 
 export default function SessionsSection() {
-  const past = SESSIONS.filter((s) => s.status === "past");
-  const upcoming = SESSIONS.filter((s) => s.status !== "past");
-  const [tab, setTab] = useState<"upcoming" | "past">("upcoming");
+  const [activeIdx, setActiveIdx] = useState(() => {
+    // Default to first upcoming session, or last if all past
+    const firstUpcoming = SESSIONS.findIndex((s) => s.status !== "past");
+    return firstUpcoming >= 0 ? firstUpcoming : SESSIONS.length - 1;
+  });
+
+  const active = SESSIONS[activeIdx];
 
   return (
     <section
@@ -204,68 +169,89 @@ export default function SessionsSection() {
       }}
     >
       <div className="container-wide" id="schedule">
-        {/* Heading row: title+description left, tabs right (bottom-aligned) */}
+        {/* Section heading */}
+        <div style={{ marginBottom: "48px" }}>
+          <h2
+            className="section-heading"
+            style={{ fontSize: "clamp(2.5rem, 4vw, 4rem)", margin: "0 0 12px" }}
+          >
+            Sessions &amp; Workshops
+          </h2>
+          <p
+            style={{
+              fontSize: "16px",
+              color: "rgba(23,22,21,0.6)",
+              letterSpacing: "-0.16px",
+              maxWidth: "560px",
+              margin: 0,
+            }}
+          >
+            Five weeks of programming for Singapore builders. More sessions will be announced as partners confirm.
+          </p>
+        </div>
+
+        {/* Session tabs */}
         <div
           style={{
             display: "flex",
-            alignItems: "flex-end",
-            justifyContent: "space-between",
-            gap: "24px",
-            marginBottom: "48px",
-            flexWrap: "wrap",
+            gap: "0",
+            borderBottom: "2px solid rgba(23,22,21,0.12)",
+            marginBottom: "40px",
+            overflowX: "auto",
           }}
         >
-          <div>
-            <h2
-              className="section-heading"
-              style={{ fontSize: "clamp(2.5rem, 4vw, 4rem)", margin: "0 0 12px" }}
-            >
-              Sessions &amp; Workshops
-            </h2>
-            <p
-              style={{
-                fontSize: "16px",
-                color: "rgba(23,22,21,0.6)",
-                letterSpacing: "-0.16px",
-                maxWidth: "560px",
-                margin: 0,
-              }}
-            >
-              Five weeks of programming for Singapore builders. More sessions will be announced as partners confirm.
-            </p>
-          </div>
-
-          {/* Tabs — underline style matching site typography */}
-          <div style={{ display: "flex", gap: "0", flexShrink: 0 }}>
-            {(["upcoming", "past"] as const).map((t, i) => (
+          {SESSIONS.map((session, idx) => {
+            const isActive = idx === activeIdx;
+            const isPast = session.status === "past";
+            return (
               <button
-                key={t}
-                onClick={() => setTab(t)}
+                key={session.id}
+                onClick={() => setActiveIdx(idx)}
                 style={{
-                  fontSize: "13px",
-                  fontWeight: 600,
-                  letterSpacing: "0.32px",
-                  textTransform: "uppercase",
-                  padding: "8px 16px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  padding: "12px 24px 14px",
                   background: "none",
                   border: "none",
-                  borderBottom: tab === t ? "2px solid #171615" : "2px solid rgba(23,22,21,0.12)",
-                  color: tab === t ? "#171615" : "rgba(23,22,21,0.35)",
+                  borderBottom: isActive ? "2px solid #171615" : "2px solid transparent",
+                  marginBottom: "-2px",
                   cursor: "pointer",
-                  marginLeft: i === 0 ? 0 : "0",
-                  transition: "color 0.15s, border-color 0.15s",
+                  flexShrink: 0,
+                  transition: "border-color 0.15s",
                 }}
               >
-                {t === "upcoming" ? `Upcoming (${upcoming.length})` : `Past (${past.length})`}
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: 700,
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: isActive ? "#171615" : isPast ? "rgba(23,22,21,0.3)" : "rgba(23,22,21,0.45)",
+                    marginBottom: "3px",
+                    transition: "color 0.15s",
+                  }}
+                >
+                  Session {idx + 1}
+                </span>
+                <span
+                  style={{
+                    fontSize: "13px",
+                    fontWeight: isActive ? 600 : 400,
+                    color: isActive ? "#171615" : isPast ? "rgba(23,22,21,0.3)" : "rgba(23,22,21,0.55)",
+                    transition: "color 0.15s, font-weight 0.15s",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {session.date}
+                </span>
               </button>
-            ))}
-          </div>
+            );
+          })}
         </div>
 
-        {/* Session blocks */}
-        {tab === "upcoming"
-          ? upcoming.map((s) => <SessionBlock key={s.id} session={s} isPast={false} />)
-          : past.map((s) => <SessionBlock key={s.id} session={s} isPast={true} />)}
+        {/* Active session content */}
+        {active && <SessionBlock session={active} />}
       </div>
     </section>
   );

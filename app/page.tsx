@@ -122,9 +122,9 @@ function Hero() {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/logos/superteam.d554d881.svg"
+            src="/logos/superteam-sg.svg"
             alt="Superteam SG"
-            style={{ height: "22px", width: "auto", filter: "brightness(0) invert(1)" }}
+            style={{ height: "44px", width: "auto" }}
           />
           <span style={{ color: "rgba(255,255,255,0.3)", fontSize: "18px" }}>×</span>
           {/* eslint-disable-next-line @next/next/no-img-element */}
