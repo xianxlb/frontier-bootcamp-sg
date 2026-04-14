@@ -214,6 +214,69 @@ function Hero() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// LOGO TICKER — mentor company logos
+// ─────────────────────────────────────────────────────────────────────────────
+
+const COMPANY_LOGOS = [
+  { src: "/logos/allium-black.png",                        alt: "Allium",            height: 20 },
+  { src: "/logos/chainstack-full.svg",                     alt: "Chainstack",        height: 20 },
+  { src: "/logos/mesa-new.png",                            alt: "Mesa",              height: 24 },
+  { src: "/logos/solana_foundation_logo.c699502f.svg",     alt: "Solana Foundation", height: 20 },
+  { src: "/logos/superteam-sg-full.svg",                   alt: "Superteam SG",      height: 32 },
+  { src: "/logos/smub.png",                                alt: "SMUB",              height: 36 },
+  { src: "/logos/sanctum.svg",                             alt: "Sanctum",           height: 36 },
+  { src: "/logos/jupiter.svg",                             alt: "Jupiter",           height: 26 },
+  { src: "/logos/meteora.svg",                             alt: "Meteora",           height: 20 },
+];
+
+function LogoTicker() {
+  const items = [...COMPANY_LOGOS, ...COMPANY_LOGOS]; // duplicate for seamless loop
+  return (
+    <div
+      style={{
+        backgroundColor: "white",
+        paddingTop: "32px",
+        paddingBottom: "48px",
+        overflow: "hidden",
+        borderBottom: "1px solid rgba(0,0,0,0.06)",
+      }}
+    >
+      <p
+        style={{
+          textAlign: "center",
+          fontSize: "11px",
+          fontWeight: 500,
+          letterSpacing: "0.8px",
+          textTransform: "uppercase",
+          color: "rgba(23,22,21,0.35)",
+          marginBottom: "24px",
+        }}
+      >
+        Mentors and Partners from
+      </p>
+      <div style={{ overflow: "hidden" }}>
+        <div className="logo-ticker-track">
+          {items.map((logo, i) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={i}
+              src={logo.src}
+              alt={logo.alt}
+              style={{
+                height: `${logo.height}px`,
+                width: "auto",
+                opacity: 0.85,
+                flexShrink: 0,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // BOOTCAMP BENEFITS (adapts Accelerator section)
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -630,6 +693,7 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <LogoTicker />
         <Benefits />
         <Prizes />
         <Mentors />

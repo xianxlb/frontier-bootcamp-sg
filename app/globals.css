@@ -209,6 +209,27 @@ body {
   padding-right: 24px;
 }
 
+/* ── Logo ticker ── */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logo-ticker-track {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 64px;
+  animation: ticker 28s linear infinite;
+  width: max-content;
+  min-width: max-content;
+}
+
+.logo-ticker-track:hover {
+  animation-play-state: paused;
+}
+
 /* ═══════════════════════════════════════
    RESPONSIVE — phone (≤ 767px)
    ═══════════════════════════════════════ */
