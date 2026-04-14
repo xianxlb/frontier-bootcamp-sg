@@ -100,7 +100,7 @@ function SessionBlock({ session }: { session: Session }) {
           href={EVENT.lumaUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="workshop-row"
+          className="workshop-row session-row"
           style={{
             display: "flex",
             alignItems: "center",
@@ -114,6 +114,7 @@ function SessionBlock({ session }: { session: Session }) {
           <WorkshopLogo src={item.logo ?? session.logo} alt={item.item} />
           <div style={{ flex: 1, minWidth: 0 }}>
             <p
+              className="session-agenda-title"
               style={{
                 fontSize: "17.92px",
                 fontWeight: 500,
@@ -162,6 +163,7 @@ export default function SessionsSection() {
   return (
     <section
       id="workshops"
+      className="sessions-section"
       style={{
         background: "linear-gradient(180deg, #ffffff 0%, #fdfcfa 15%, #fdfcfa 100%)",
         paddingTop: "96px",

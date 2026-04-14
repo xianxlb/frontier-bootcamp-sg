@@ -9,6 +9,7 @@ import { EVENT, HACKATHON_PRIZES, MENTORS } from "@/data/bootcamp";
 function Hero() {
   return (
     <section
+      className="hero-section"
       style={{
         position: "relative",
         height: "851px",
@@ -56,6 +57,7 @@ function Hero() {
         src="/logos/human-main.webp"
         alt=""
         aria-hidden="true"
+        className="hero-figure"
         style={{
           position: "absolute",
           bottom: 0,
@@ -85,6 +87,7 @@ function Hero() {
 
       {/* Content — centered, roughly lower 2/3 */}
       <div
+        className="hero-content"
         style={{
           position: "relative",
           zIndex: 10,
@@ -151,6 +154,7 @@ function Hero() {
 
         {/* Main wordmark */}
         <div
+          className="hero-title"
           style={{
             fontFamily: "var(--font-instrument-serif), Georgia, serif",
             fontStyle: "italic",
@@ -183,7 +187,7 @@ function Hero() {
         </p>
 
         {/* CTAs */}
-        <div style={{ display: "flex", gap: "16px", marginTop: "8px", alignItems: "center" }}>
+        <div className="hero-ctas" style={{ display: "flex", gap: "16px", marginTop: "8px", alignItems: "center" }}>
           <a className="register-btn" href={EVENT.lumaUrl} target="_blank" rel="noopener noreferrer">
             <span className="register-btn-inner">Apply for Bootcamp ▶</span>
           </a>
@@ -240,6 +244,7 @@ const BENEFITS = [
 function Benefits() {
   return (
     <section
+      className="benefits-section"
       style={{
         backgroundColor: "white",
         padding: "120px 24px",
@@ -282,6 +287,7 @@ function Benefits() {
 
         {/* Three benefit cards */}
         <div
+          className="benefits-grid"
           style={{
             display: "flex",
             gap: "96px",
@@ -292,6 +298,7 @@ function Benefits() {
           {BENEFITS.map((b) => (
             <div
               key={b.amount}
+              className="benefit-card"
               style={{
                 display: "flex",
                 flexDirection: "column",
@@ -305,6 +312,7 @@ function Benefits() {
               <img
                 src={b.img}
                 alt={b.alt}
+                className="benefit-card-img"
                 style={{
                   width: "300px",
                   height: "220px",
@@ -341,7 +349,7 @@ function Benefits() {
 
 function Prizes() {
   return (
-    <section id="prizes" style={{ backgroundColor: "white", padding: "96px 24px" }}>
+    <section id="prizes" className="prizes-section" style={{ backgroundColor: "white", padding: "96px 24px" }}>
       <div className="container-wide">
         <div style={{ marginBottom: "48px" }}>
           <h2
@@ -356,6 +364,7 @@ function Prizes() {
         </div>
 
         <div
+          className="prizes-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
@@ -365,6 +374,7 @@ function Prizes() {
           {HACKATHON_PRIZES.map((prize, i) => (
             <div
               key={prize.label}
+              className="prize-cell"
               style={{
                 padding: "40px 32px",
                 borderRight: i < HACKATHON_PRIZES.length - 1 ? "1px solid rgba(0,0,0,0.1)" : "none",
@@ -587,7 +597,7 @@ function Footer() {
         <span style={{ fontSize: "14px", color: "rgba(23,22,21,0.5)", letterSpacing: "-0.14px" }}>
           Superteam SG · Colosseum Frontier Hackathon · April–May 2026
         </span>
-        <div style={{ display: "flex", gap: "24px" }}>
+        <div className="footer-links" style={{ display: "flex", gap: "24px" }}>
           <a
             href={EVENT.hackathonUrl}
             target="_blank"

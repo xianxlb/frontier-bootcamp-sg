@@ -16,6 +16,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://frontier-bootcamp-sg.vercel.app"),
   title: "Colosseum Frontier Hackathon Bootcamp — Superteam SG",
   description:
     "A 5-session bootcamp supporting Singapore builders in the Colosseum Frontier Hackathon. Form teams, attend workshops, and compete for $250K+ in prizes.",
@@ -24,6 +25,18 @@ export const metadata: Metadata = {
     description:
       "Build on Solana. Ship for the frontier. 5-session bootcamp for Singapore builders.",
     type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1080,
+        height: 1080,
+        alt: "Singapore Builder Bootcamp — Frontier",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og-image.jpg"],
   },
 };
 

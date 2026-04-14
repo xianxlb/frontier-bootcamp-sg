@@ -97,6 +97,7 @@ export default function Nav() {
             <a
               key={label}
               href={href}
+              className="nav-link"
               style={{
                 fontSize: "16px",
                 fontWeight: 400,

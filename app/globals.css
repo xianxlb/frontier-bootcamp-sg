@@ -208,3 +208,62 @@ body {
   padding-left: 24px;
   padding-right: 24px;
 }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — phone (≤ 767px)
+   ═══════════════════════════════════════ */
+@media (max-width: 767px) {
+  /* Nav: hide text links, keep register button */
+  .nav-link { display: none !important; }
+
+  /* Hero: auto height, full-viewport content div */
+  .hero-section { height: auto !important; }
+  .hero-content {
+    height: auto !important;
+    min-height: 100svh;
+    padding: 96px 20px 48px !important;
+    gap: 12px !important;
+  }
+  .hero-title { font-size: clamp(2.8rem, 13vw, 5rem) !important; }
+  .hero-figure { height: 320px !important; right: -2% !important; }
+  .hero-ctas { flex-wrap: wrap !important; justify-content: center !important; }
+
+  /* Benefits */
+  .benefits-section { padding: 72px 20px !important; }
+  .benefits-grid { gap: 48px !important; }
+  .benefit-card { max-width: 100% !important; }
+  .benefit-card-img { width: 100% !important; max-width: none !important; height: 200px !important; }
+
+  /* Prizes */
+  .prizes-section { padding: 64px 20px !important; }
+  .prizes-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .prize-cell {
+    border-right: 1px solid rgba(0,0,0,0.1) !important;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 28px 20px !important;
+  }
+  .prize-cell:nth-child(2n) { border-right: none !important; }
+  .prize-cell:nth-last-child(-n+2) { border-bottom: none; }
+
+  /* Sessions */
+  .sessions-section { padding-top: 64px !important; padding-bottom: 64px !important; }
+  .session-agenda-title { white-space: normal !important; }
+  .session-row { padding-right: 12px !important; min-height: 80px !important; }
+  .workshop-thumb { width: 56px; height: 56px; border-radius: 14px; }
+
+  /* Footer */
+  .footer-links { flex-direction: column !important; gap: 8px !important; align-items: flex-start !important; }
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — tablet (768px – 1023px)
+   ═══════════════════════════════════════ */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .prizes-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .prize-cell {
+    border-right: 1px solid rgba(0,0,0,0.1) !important;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  .prize-cell:nth-child(2n) { border-right: none !important; }
+  .prize-cell:nth-last-child(-n+2) { border-bottom: none; }
+}
