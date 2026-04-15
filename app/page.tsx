@@ -227,6 +227,7 @@ const COMPANY_LOGOS = [
   { src: "/logos/sanctum.svg",                             alt: "Sanctum",           height: 36 },
   { src: "/logos/jupiter.svg",                             alt: "Jupiter",           height: 26 },
   { src: "/logos/meteora.svg",                             alt: "Meteora",           height: 20 },
+  { src: "/logos/antler.svg",                              alt: "Antler",            height: 24 },
 ];
 
 function LogoTicker() {
